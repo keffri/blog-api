@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema();
+const Schema = mongoose.Schema;
 
 const PostSchema = new Schema({
   title: { type: String, minLength: 4, maxLength: 30, required: true },
