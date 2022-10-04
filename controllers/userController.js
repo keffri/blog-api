@@ -14,9 +14,11 @@ exports.getSignup = (req, res, next) => {
 exports.postSignup = [
   body('username')
     .trim()
-    .isLength({ min: 4, max: 16 })
+    .isLength({ min: 4 })
     .escape()
-    .withMessage('Username must be at least 4 characters.'),
+    .withMessage('Username must be at least 4 characters.')
+    .isLength({ max: 16 })
+    .withMessage('Username must be less than or 17 characters.'),
   body('password')
     .trim()
     .isLength({ min: 8 })
@@ -29,18 +31,18 @@ exports.postSignup = [
     .withMessage('Password must be at least 8 characters.')
     .custom((value, { req }) => {
       if (value !== req.body.password) {
-        throw new Error('Passwords must match eachother.');
+        throw new Error('Passwords must match each other.');
       }
       return true;
     }),
-  (req, res, next) => {
+  async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.render('signup', { errors: errors.array() });
     }
 
     try {
-      const existingUser = User.find({ username: req.body.username });
+      const existingUser = await User.find({ username: req.body.username });
       if (existingUser.length > 0) {
         return res.render('signup', { userFail: 'Username is already taken.' });
       }
