@@ -1,8 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
+const blog_controller = require('../controllers/blogController');
 const post_controller = require('../controllers/postController');
 const comment_controller = require('../controllers/commentController');
+
+// HOME PAGE
+router.get('/', blog_controller.getBlog);
 
 // POSTS
 router.get('/posts', post_controller.getPosts);
