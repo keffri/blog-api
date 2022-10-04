@@ -1,10 +1,14 @@
 require('dotenv').config();
 const express = require('express');
-const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 
 const indexRouter = require('./routes/index');
+const compression = require('compression');
+const helmet = require('helmet');
+
+const app = express();
+app.use(helmet());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -19,6 +23,8 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+
+app.use(compression());
 
 app.use('/blog', indexRouter);
 
