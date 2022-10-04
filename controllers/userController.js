@@ -7,6 +7,11 @@ exports.getLogin = (req, res, next) => {
   res.render('login');
 };
 
+exports.postLogin = passport.authenticate('local', {
+  successRedirect: '/blog',
+  failureRedirect: '/sign-up',
+});
+
 exports.getSignup = (req, res, next) => {
   res.render('signup');
 };
