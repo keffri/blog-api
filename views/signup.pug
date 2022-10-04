@@ -8,5 +8,11 @@ block content
         label(for="password") Password:
         input(name="password" type="password" required="true")
         label(for="confirmPassword") Confirm password: 
-        input(name="confirmPassword" type="password" required="true")
+        input(name="confirmPassword" type="password" required="true")        
+        if userFail
+            p(style="color: red") - #{userFail}
+        if errors
+            each error in errors
+                p(style="color: red") - #{error.param} : #{error.msg}
         button Sign-Up
+        
