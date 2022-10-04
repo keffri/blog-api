@@ -6,6 +6,9 @@ const bodyParser = require('body-parser');
 
 const indexRouter = require('./routes/index');
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 const mongoose = require('mongoose');
 const mongoDB = process.env.MONGODB_APPCODE;
 mongoose.connect(mongoDB, {
@@ -17,6 +20,6 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-app.use('/', indexRouter);
+app.use('/blog', indexRouter);
 
 app.listen(3000, () => console.log('Server started on port 3000'));
