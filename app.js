@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 
 const session = require('express-session');
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
 const { authenticate, serialize, deserialize } = require('./passport/passport');
 
 const indexRouter = require('./routes/index');
