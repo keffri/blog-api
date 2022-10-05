@@ -1,6 +1,7 @@
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/userModel');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 module.exports = {
   authenticate: new LocalStrategy((username, password, done) => {
@@ -14,6 +15,10 @@ module.exports = {
       bcrypt.compare(password, user.password, (err, res) => {
         if (err) return console.log(err);
         if (res) {
+          jwt.sign({ user }, 'privateKey', { expiresIn: 30 }, (err, token) => {
+            if (err) console.log(err);
+            console.log(user, token);
+          });
           return done(null, user);
         } else {
           return done(null, false, { message: 'Incorrect password' });
