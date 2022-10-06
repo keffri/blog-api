@@ -4,3 +4,7 @@ block content
     h1 #{post.title}
     p #{post.post}
     p #{post.date}
+    form(action="" method="POST")
+        label(for="comment")
+        textarea(name="comment" required="true")
+        button Submit
