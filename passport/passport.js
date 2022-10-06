@@ -16,8 +16,7 @@ module.exports = {
         if (err) return console.log(err);
         if (res) {
           jwt.sign({ user }, 'privateKey', { expiresIn: 30 }, (err, token) => {
-            if (err) console.log(err);
-            console.log(user, token);
+            if (err) done(err);
           });
           return done(null, user);
         } else {
