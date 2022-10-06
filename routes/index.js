@@ -18,12 +18,12 @@ router.put('/posts/:post_id', post_controller.updatePost);
 router.delete('/posts/:post_id', post_controller.deletePost);
 
 // COMMENTS
-router.post('/posts/:post_id/comments', comment_controller.createComment);
+router.post('/posts/:post_id/comments', comment_controller.postComment);
 
 // SINGLE COMMENT
 router.put(
   '/posts/:post_id/comments/:comment_id',
-  comment_controller.updateComment
+  comment_controller.putComment
 );
 router.delete(
   '/posts/:post_id/comments/:comment_id',
