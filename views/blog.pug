@@ -2,11 +2,13 @@ extends layout
 
 block content
     h1 Blog
-    button
-        a(href="/user/sign-up") Sign Up
-    button
-        a(href="/user/log-in") Log In
     if user
+        button 
+            a(href="/user/log-out") Log Out
         p Welcome #{user.username}
     else
         p Welcome!
+        button
+            a(href="/user/sign-up") Sign Up
+        button
+            a(href="/user/log-in") Log In
