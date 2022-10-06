@@ -5,7 +5,7 @@ const PostSchema = new Schema({
   title: { type: String, minLength: 4, maxLength: 30, required: true },
   post: { type: String, minLength: 1, required: true },
   date: { type: Date, default: Date.now, required: true },
-  comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
+  comments: { type: Array },
 });
 
 // create virtual date with luxon
