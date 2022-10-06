@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    button
+        a(href='/blog') Home
+    each post in posts_list
+        h1 #{post.title}
+        p #{post.post}
+        p #{post.date}
