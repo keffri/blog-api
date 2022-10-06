@@ -12,6 +12,15 @@ exports.postLogin = passport.authenticate('local', {
   failureRedirect: '/sign-up',
 });
 
+exports.getLogout = (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect('/blog');
+  });
+};
+
 exports.getSignup = (req, res, next) => {
   res.render('signup');
 };
