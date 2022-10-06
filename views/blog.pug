@@ -5,6 +5,8 @@ block content
     if user
         button 
             a(href="/user/log-out") Log Out
+        button
+            a(href="/blog/posts") View Posts
         p Welcome #{user.username}
     else
         p Welcome!
@@ -12,3 +14,5 @@ block content
             a(href="/user/sign-up") Sign Up
         button
             a(href="/user/log-in") Log In
+        button
+            a(href="/blog/posts") View Posts   
