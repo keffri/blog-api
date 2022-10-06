@@ -10,4 +10,8 @@ const PostSchema = new Schema({
 
 // create virtual date with luxon
 
+PostSchema.virtual('url').get(function () {
+  return `/blog/posts/${this.id}`;
+});
+
 module.exports = mongoose.model('Post', PostSchema);
