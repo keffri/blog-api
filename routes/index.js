@@ -18,14 +18,9 @@ router.put('/posts/:post_id', post_controller.updatePost);
 router.delete('/posts/:post_id', post_controller.deletePost);
 
 // COMMENTS
-router.get('/posts/:post_id/comments', comment_controller.getComments);
 router.post('/posts/:post_id/comments', comment_controller.createComment);
 
 // SINGLE COMMENT
-router.get(
-  '/posts/:post_id/comments/:comment_id',
-  comment_controller.getComment
-);
 router.put(
   '/posts/:post_id/comments/:comment_id',
   comment_controller.updateComment
