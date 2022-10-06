@@ -1,12 +1,20 @@
 const Post = require('../models/postModel');
 
 exports.getPosts = (req, res, next) => {
-  Post.find((err, posts) => {
-    if (err) {
-      return next(err);
-    }
-    res.json(posts);
-  });
+  Post.find({}, 'title')
+    .populate('post')
+    .populate('date')
+    .populate('comments')
+    .sort({ date: 1 })
+    .exec((err, posts_list) => {
+      if (err) {
+        return next(err);
+      }
+
+      res.render('posts', {
+        posts_list,
+      });
+    });
 };
 
 exports.createPost = (req, res, next) => {
