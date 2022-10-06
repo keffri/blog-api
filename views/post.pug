@@ -1,10 +1,17 @@
 extends layout
 
 block content
+    button
+        a(href="/blog") HOME
     h1 #{post.title}
     p #{post.post}
     p #{post.date}
-    form(action="" method="POST")
-        label(for="comment")
-        textarea(name="comment" required="true")
-        button Submit
+    each comment in post.comments
+        p #{comment.user}
+        p #{comment.comment}
+        p #{comment.date}
+    if user
+        form(action=`/blog/posts/${post._id}/comments` method="POST")
+            label(for="comment")
+            textarea(name="comment" required="true")
+            button Submit
