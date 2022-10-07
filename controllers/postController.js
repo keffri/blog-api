@@ -4,6 +4,7 @@ exports.getPosts = (req, res, next) => {
   Post.find({}, 'title')
     .populate('post')
     .populate('date')
+    .populate('comments')
     .sort({ date: -1 })
     .exec((err, posts_list) => {
       if (err) {
