@@ -26,7 +26,7 @@ router.put(
   comment_controller.putComment
 );
 router.delete(
-  '/posts/:post_id/comments/:comment_id',
+  '/posts/:post_id/comments/:comment_id/',
   comment_controller.deleteComment
 );
 
