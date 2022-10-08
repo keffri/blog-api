@@ -12,6 +12,10 @@ block content
         p #{comment.user}
         p #{comment.comment}
         p #{comment.date}
+        if !user
+        else if comment.user === user.username
+            form(action=`/blog/posts/${post._id}/comments/${comment._id}?_method=DELETE` method="POST")
+                button Delete
     if user
         form(action=`/blog/posts/${post._id}/comments` method="POST")
             label(for="comment")
