@@ -8,8 +8,11 @@ exports.postComment = async (req, res, next) => {
 
   const comment = new Comment({
     user: req.user.username,
+    post: req.params.post_id,
     comment: req.body.comment,
   });
+
+  comment.save();
 
   comments.push(comment);
 
@@ -23,4 +26,28 @@ exports.postComment = async (req, res, next) => {
 
 exports.putComment = (req, res, next) => {};
 
-exports.deleteComment = (req, res, next) => {};
+exports.deleteComment = async (req, res, next) => {
+  const post = await Post.findById(req.params.post_id).exec();
+  const comments = post.comments;
+  const updatedComments = comments.filter((comment) => {
+    return comment._id.toString() !== req.params.comment_id;
+  });
+
+  Post.findByIdAndUpdate(
+    req.params.post_id,
+    { comments: updatedComments },
+    (err, post) => {
+      if (err) {
+        return next(err);
+      }
+    }
+  );
+
+  Comment.findByIdAndDelete(req.params.comment_id, (err, result) => {
+    if (err) {
+      next(err);
+    } else {
+      res.redirect(`/blog/posts/${req.params.post_id}`);
+    }
+  });
+};
