@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const { DateTime } = require('luxon');
 
 const CommentSchema = new Schema({
   user: { type: String, required: true },
@@ -8,6 +9,8 @@ const CommentSchema = new Schema({
   date: { type: Date, default: Date.now, required: true },
 });
 
-// create virtual date with luxon
+CommentSchema.virtual('commentDate').get(function () {
+  return DateTime.fromJSDate(this.date).toFormat('DDDD, h:mm:ss, a');
+});
 
 module.exports = mongoose.model('Comment', CommentSchema);
