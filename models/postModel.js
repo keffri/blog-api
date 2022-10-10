@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const { DateTime } = require('luxon');
 
 const PostSchema = new Schema({
   title: { type: String, minLength: 4, maxLength: 30, required: true },
@@ -8,7 +9,9 @@ const PostSchema = new Schema({
   comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
 });
 
-// create virtual date with luxon
+PostSchema.virtual('postDate').get(function () {
+  return DateTime.fromJSDate(this.date).toFormat('DDDD, h:mm:ss, a');
+});
 
 PostSchema.virtual('url').get(function () {
   return `/blog/posts/${this.id}`;
