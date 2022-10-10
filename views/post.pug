@@ -7,11 +7,11 @@ block content
         a(href="/blog/posts") View Posts
     h1 #{post.title}
     p #{post.post}
-    p #{post.date}
+    p #{post.postDate}
     each comment in post.comments
         p #{comment.user}
         p #{comment.comment}
-        p #{comment.date}
+        p #{comment.commentDate}
         if !user
         else if comment.user === user.username
             form(action=`/blog/posts/${post._id}/comments/${comment._id}?_method=DELETE` method="POST")
