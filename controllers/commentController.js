@@ -1,29 +1,71 @@
 const Comment = require('../models/commentModel');
 const Post = require('../models/postModel');
+const { body, validationResult } = require('express-validator');
 const { DateTime } = require('luxon');
 
-exports.postComment = async (req, res, next) => {
-  const post = await Post.findById(req.params.post_id).exec();
+// exports.postComment = async (req, res, next) => {
+//   const post = await Post.findById(req.params.post_id).exec();
 
-  const comments = post.comments;
+//   const comments = post.comments;
 
-  const comment = new Comment({
-    user: req.user.username,
-    post: req.params.post_id,
-    comment: req.body.comment,
-  });
+//   const comment = new Comment({
+//     user: req.user.username,
+//     post: req.params.post_id,
+//     comment: req.body.comment,
+//   });
 
-  comment.save();
+//   comment.save();
 
-  comments.push(comment);
+//   comments.push(comment);
 
-  Post.findByIdAndUpdate(req.params.post_id, { comments }, (err, post) => {
-    if (err) {
-      return next(err);
+//   Post.findByIdAndUpdate(req.params.post_id, { comments }, (err, post) => {
+//     if (err) {
+//       return next(err);
+//     }
+//     res.redirect(`/blog/posts/${req.params.post_id}`);
+//   });
+// };
+
+exports.postComment = [
+  body('comment')
+    .trim()
+    .isLength({ min: 4 })
+    .escape()
+    .withMessage('Comment is too short. (min: 4)')
+    .isLength({ max: 140 })
+    .escape()
+    .withMessage('Comment is too long. (max: 140)'),
+
+  async (req, res, next) => {
+    const post = await Post.findById(req.params.post_id)
+      .populate('comments')
+      .exec();
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.render('post', { post, errors: errors.array() });
     }
-    res.redirect(`/blog/posts/${req.params.post_id}`);
-  });
-};
+
+    const comments = post.comments;
+
+    const comment = new Comment({
+      user: req.user.username,
+      post: req.params.post_id,
+      comment: req.body.comment,
+    });
+
+    comment.save();
+
+    comments.push(comment);
+
+    Post.findByIdAndUpdate(req.params.post_id, { comments }, (err, post) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect(`/blog/posts/${req.params.post_id}`);
+    });
+  },
+];
 
 exports.getComment = (req, res, next) => {
   Comment.findById(req.params.comment_id)
