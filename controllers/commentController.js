@@ -1,3 +1,4 @@
+const { renderSync } = require('sass');
 const Comment = require('../models/commentModel');
 const Post = require('../models/postModel');
 
@@ -24,7 +25,40 @@ exports.postComment = async (req, res, next) => {
   });
 };
 
-exports.putComment = (req, res, next) => {};
+exports.getComment = (req, res, next) => {
+  Comment.findById(req.params.comment_id)
+    .populate('user')
+    .populate('post')
+    .populate('comment')
+    .exec((err, comment) => {
+      if (err) {
+        return next(err);
+      } else {
+        res.render('comment', {
+          comment,
+          postID: req.params.post_id,
+        });
+      }
+    });
+};
+
+exports.putComment = (req, res, next) => {
+  Comment.findById(req.params.comment_id, (err, comment) => {
+    if (err) {
+      return next(err);
+    }
+
+    comment.comment = req.body.comment;
+
+    comment.save((err) => {
+      if (err) {
+        return next(err);
+      }
+
+      res.redirect(`/blog/posts/${req.params.post_id}`);
+    });
+  });
+};
 
 exports.deleteComment = async (req, res, next) => {
   const post = await Post.findById(req.params.post_id).exec();
