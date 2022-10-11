@@ -1,6 +1,6 @@
-const { renderSync } = require('sass');
 const Comment = require('../models/commentModel');
 const Post = require('../models/postModel');
+const { DateTime } = require('luxon');
 
 exports.postComment = async (req, res, next) => {
   const post = await Post.findById(req.params.post_id).exec();
@@ -49,6 +49,10 @@ exports.putComment = (req, res, next) => {
     }
 
     comment.comment = req.body.comment;
+    comment.edited = true;
+    comment.editedDate = DateTime.fromJSDate(new Date()).toFormat(
+      'DDDD, h:mm:ss, a'
+    );
 
     comment.save((err) => {
       if (err) {
