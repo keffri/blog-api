@@ -21,10 +21,16 @@ router.delete('/posts/:post_id', post_controller.deletePost);
 router.post('/posts/:post_id/comments', comment_controller.postComment);
 
 // SINGLE COMMENT
+router.get(
+  '/posts/:post_id/comments/:comment_id/',
+  comment_controller.getComment
+);
+
 router.put(
   '/posts/:post_id/comments/:comment_id',
   comment_controller.putComment
 );
+
 router.delete(
   '/posts/:post_id/comments/:comment_id/',
   comment_controller.deleteComment
