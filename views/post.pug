@@ -11,7 +11,9 @@ block content
     each comment in post.comments
         p #{comment.user}
         p #{comment.comment}
-        p #{comment.commentDate}
+        p Commented on: #{comment.commentDate}
+        if comment.edited
+            p Edited on: #{comment.editedDate}
         if !user
         else if comment.user === user.username
             form(action=`/blog/posts/${post._id}/comments/${comment._id}?_method=DELETE` method="POST")
