@@ -7,6 +7,11 @@ const CommentSchema = new Schema({
   post: { type: Schema.Types.ObjectId, ref: 'Post' },
   comment: { type: String, minLength: 4, maxLength: 140, required: true },
   date: { type: Date, default: Date.now, required: true },
+  edited: { type: Boolean, default: false, required: true },
+  editedDate: {
+    type: String,
+    default: DateTime.fromJSDate(this.date).toFormat('DDDD, h:mm:ss, a'),
+  },
 });
 
 CommentSchema.virtual('commentDate').get(function () {
