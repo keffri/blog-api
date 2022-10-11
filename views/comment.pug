@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    form(action=`/blog/posts/${postID}/comments/${comment._id}?_method=PUT` method="POST")
+        p User: #{comment.user}
+        label(for="comment")
+        textarea(name="comment" required="true") #{comment.comment}
+        p Date: #{comment.commentDate}
+        button Submit
