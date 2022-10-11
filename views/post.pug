@@ -24,4 +24,7 @@ block content
         form(action=`/blog/posts/${post._id}/comments` method="POST")
             label(for="comment")
             textarea(name="comment" required="true")
+            if errors
+                each error in errors
+                    p(style="color: red") - #{error.param}: #{error.msg}
             button Submit
