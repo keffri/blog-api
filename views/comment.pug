@@ -7,7 +7,13 @@ block content
         form(action=`/blog/posts/${postID}/comments/${comment._id}?_method=PUT` method="POST")
             p User: #{comment.user}
             label(for="comment")
-            textarea(name="comment" required="true") #{comment.comment}
+            if commentText
+                textarea(name="comment" required="true") #{commentText}
+            else 
+                textarea(name="comment" required="true") #{comment.comment}
+            if errors
+                each error in errors
+                    p(style="color: red") - #{error.param}: #{error.msg}
             p Date: #{comment.commentDate}
             button Submit
     else
