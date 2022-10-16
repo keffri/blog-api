@@ -47,6 +47,7 @@ app.use((req, res, next) => {
 });
 
 app.use(compression());
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/blog', indexRouter);
 app.use('/user', userRouter);
