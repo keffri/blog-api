@@ -1,18 +1,21 @@
 extends layout
 
 block content
-    h1 Sign-up
-    form(action="" method="POST")
-        label(for="username") Username:
-        input(name="username" type="text" required="true")
-        label(for="password") Password:
-        input(name="password" type="password" required="true")
-        label(for="confirmPassword") Confirm password: 
-        input(name="confirmPassword" type="password" required="true")        
-        if userFail
-            p(style="color: red") - #{userFail}
-        if errors
-            each error in errors
-                p(style="color: red") - #{error.param} : #{error.msg}
-        button Sign-Up
+    section(class="signup")
+        nav(class="signup__nav")
+            a(href="/blog") HOME
+        h1(class="signup__title") Sign-up
+        form(class="signup__form" action="" method="POST")
+            label(for="username") Username:
+            input(name="username" type="text" required="true")
+            label(for="password") Password:
+            input(name="password" type="password" required="true")
+            label(for="confirmPassword") Confirm password: 
+            input(name="confirmPassword" type="password" required="true")        
+            if userFail
+                p(style="color: red") - #{userFail}
+            if errors
+                each error in errors
+                    p(style="color: red") - #{error.param} : #{error.msg}
+            button(class="signup__button") Sign-Up
         
