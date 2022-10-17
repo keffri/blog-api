@@ -1,18 +1,26 @@
 extends layout
 
 block content
-    h1 Blog
-    if user
-        button 
-            a(href="/user/log-out") Log Out
-        button
-            a(href="/blog/posts") View Posts
-        p Welcome #{user.username}
-    else
-        p Welcome!
-        button
-            a(href="/user/sign-up") Sign Up
-        button
-            a(href="/user/log-in") Log In
-        button
-            a(href="/blog/posts") View Posts   
+    section(class="blog")
+        if user
+            nav(class="blog__nav")
+                ul(class="blog__nav--list")
+                    li 
+                        a(href="/user/log-out") Log Out
+                    li
+                        a(href="/blog/posts") View Posts  
+        else
+            nav(class="blog__nav")    
+                ul(class="blog__nav--list") 
+                    li             
+                        a(href="/user/sign-up") Sign Up
+                    li
+                        a(href="/user/log-in") Log In
+                    li
+                        a(href="/blog/posts") View Posts   
+        h1(class="blog__title") Keffri's Blog
+        if user
+            p(class="blog__text") Welcome #{user.username}!
+        else
+            p(class="blog__text") Welcome!
+        
