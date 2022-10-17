@@ -6,18 +6,18 @@ block content
             nav(class="blog__nav")
                 ul(class="blog__nav--list")
                     li 
-                        a(href="/user/log-out") Log Out
+                        a(href="/user/log-out") LOG OUT
                     li
-                        a(href="/blog/posts") View Posts  
+                        a(href="/blog/posts") VIEW POSTS 
         else
             nav(class="blog__nav")    
                 ul(class="blog__nav--list") 
                     li             
-                        a(href="/user/sign-up") Sign Up
+                        a(href="/user/sign-up") SIGN UP
                     li
-                        a(href="/user/log-in") Log In
+                        a(href="/user/log-in") LOG IN
                     li
-                        a(href="/blog/posts") View Posts   
+                        a(href="/blog/posts") VIEW POSTS   
         h1(class="blog__title") Keffri's Blog
         if user
             p(class="blog__text") Welcome #{user.username}!
