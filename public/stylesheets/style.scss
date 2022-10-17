@@ -101,3 +101,44 @@ html, body {
 		}
 	}
 }
+
+.signup {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	
+
+	&__title {
+		font-size: 3em;
+	}
+
+	&__nav {
+		padding: 0.5rem 1rem;
+		background-color: #D7D7D7;
+		border-radius: 5px;
+
+		a {
+			color: #161616;
+			text-decoration: none;
+			
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	&__form {
+		min-width: 400px;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+	
+	&__button {
+		padding: 0.5rem;
+	}
+
+	
+}
