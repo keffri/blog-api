@@ -1,10 +1,30 @@
 extends layout
 
-block content
-    button
-        a(href='/blog') HOME
-    each post in posts_list
-        a(href=post.url) #{post.title}
-        p #{post.post}
-        p #{post.postDate}
-        p Comments: #{post.comments.length}
+block content   
+    section(class="posts")
+        if user
+            nav(class="posts__nav")    
+                ul(class="posts__nav--list") 
+                    li
+                        a(href="/blog") HOME
+                    li
+                        a(href="/user/log-out") LOG OUT
+                    li
+                        a(href="/blog/posts") VIEW POSTS
+        else
+            nav(class="posts__nav")    
+                ul(class="posts__nav--list") 
+                    li
+                        a(href="/blog") HOME
+                    li             
+                        a(href="/user/sign-up") SIGN UP
+                    li
+                        a(href="/user/log-in") LOG IN
+                    li
+                        a(href="/blog/posts") VIEW POSTS  
+        each post in posts_list
+            div(class="posts__container")
+                a(class="posts__link" href=post.url) #{post.title}
+                p(class="posts__post") #{post.post}
+                p(class="posts__date") #{post.postDate}
+                p Comments: #{post.comments.length}
