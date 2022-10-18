@@ -184,3 +184,54 @@ html, body {
 		padding: 0.5rem;
 	}	
 }
+
+.posts {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2rem;
+	&__nav {
+
+		margin-top: 3rem;
+		&--list {
+			a {
+				color: #161616;
+				text-decoration: none;
+				
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+
+			min-width: 400px;
+			background-color: #D7D7D7;
+			display: flex;
+			justify-content: space-between;
+			gap: 1em;
+			padding: 0.5rem 1rem;
+			border-radius: 5px;
+		}
+	}
+
+	&__container {
+		border: 2px solid #D7D7D7;
+		padding: 1rem;
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__link {
+		align-self: center;
+		padding-bottom: 1rem;
+		color: #D7D7D7;
+		font-size: 2rem;
+	}
+
+	&__post {
+		padding-bottom: 1rem;
+	}
+
+	&__date {
+		padding-bottom: 1rem;
+	}
+}
