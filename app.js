@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const mongoose = require('mongoose');
-const mongoDB = process.env.MONGODB_APPCODE;
+const mongoDB = process.env.MONGODB_URI || process.env.MONGODB_APPCODE;
 mongoose.connect(mongoDB, {
   useUnifiedTopology: true,
 });
@@ -43,8 +43,9 @@ app.use(
     store: new MemoryStore({
       checkPeriod: 86400000, // prune expired entries every 24h
     }),
+    saveUninitialized: true,
     resave: false,
-    secret: 'keffri',
+    secret: 'keyboard cat',
   })
 );
 app.use(passport.initialize());
