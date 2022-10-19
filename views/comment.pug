@@ -1,20 +1,20 @@
 extends layout
 
 block content
-    if !user
-        p Please log into the appropriate account if you wish to edit this comment.
-    else if user.username === comment.user
-        form(action=`/blog/posts/${postID}/comments/${comment._id}?_method=PUT` method="POST")
-            p User: #{comment.user}
-            label(for="comment")
-            if commentText
-                textarea(name="comment" required="true") #{commentText}
-            else 
-                textarea(name="comment" required="true") #{comment.comment}
-            if errors
-                each error in errors
-                    p(style="color: red") - #{error.param}: #{error.msg}
-            p Date: #{comment.commentDate}
-            button Submit
-    else
-        p You do not have permission to edit this comment.
+    section(class="comment")
+        if !user
+            p Please log into the appropriate account if you wish to edit this comment.
+        else if user.username === comment.user
+            form(class="comment__form" action=`/blog/posts/${postID}/comments/${comment._id}?_method=PUT` method="POST")
+                p User: #{comment.user}
+                if commentText
+                    textarea(name="comment" required="true" style="resize: none") #{commentText}
+                else 
+                    textarea(name="comment" required="true" style="resize: none") #{comment.comment}
+                if errors
+                    each error in errors
+                        p(style="color: red") - #{error.param}: #{error.msg}
+                p Date: #{comment.commentDate}
+                button(class="comment__button") Submit
+        else
+            p You do not have permission to edit this comment.
