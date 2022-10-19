@@ -62,6 +62,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/blog', indexRouter);
 app.use('/user', userRouter);
+app.get('/', (req, res) => {
+  res.redirect('/blog');
+});
 
 let PORT = process.env.PORT || 3000;
 
