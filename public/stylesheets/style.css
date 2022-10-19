@@ -128,7 +128,24 @@ html, body {
   gap: 1rem;
 }
 .signup__button {
-  padding: 0.5rem;
+  background-color: #161616;
+  border: 1px solid #D7D7D7;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  color: #D7D7D7;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.signup__button:hover {
+  color: #161616;
+  background-color: #D7D7D7;
+}
+.signup__button:hover a {
+  color: #161616;
+}
+.signup__button a {
+  color: #D7D7D7;
+  text-decoration: none;
 }
 
 .login {
@@ -163,7 +180,24 @@ html, body {
   gap: 1rem;
 }
 .login__button {
-  padding: 0.5rem;
+  background-color: #161616;
+  border: 1px solid #D7D7D7;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  color: #D7D7D7;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.login__button:hover {
+  color: #161616;
+  background-color: #D7D7D7;
+}
+.login__button:hover a {
+  color: #161616;
+}
+.login__button a {
+  color: #D7D7D7;
+  text-decoration: none;
 }
 
 .posts {

@@ -80,7 +80,7 @@ html, body {
 	}
 
 	&__nav {
-		// justify-self: flex-start;
+
 		&--list {
 			a {
 				color: #161616;
@@ -140,7 +140,27 @@ html, body {
 	}
 	
 	&__button {
-		padding: 0.5rem;
+		background-color: #161616;
+		border: 1px solid #D7D7D7;
+		border-radius: 5px;
+		padding: 0.5rem 1rem;
+		color: #D7D7D7;
+		cursor: pointer;
+		transition: all 0.3s;
+
+		&:hover {
+			color: #161616;
+			background-color: #D7D7D7;
+
+			a {
+				color: #161616;
+			}
+		}		
+
+		a {
+			color: #D7D7D7;
+			text-decoration: none;				
+		}
 	}	
 }
 
@@ -181,7 +201,27 @@ html, body {
 	}
 
 	&__button {
-		padding: 0.5rem;
+		background-color: #161616;
+		border: 1px solid #D7D7D7;
+		border-radius: 5px;
+		padding: 0.5rem 1rem;
+		color: #D7D7D7;
+		cursor: pointer;
+		transition: all 0.3s;
+
+		&:hover {
+			color: #161616;
+			background-color: #D7D7D7;
+
+			a {
+				color: #161616;
+			}
+		}		
+
+		a {
+			color: #D7D7D7;
+			text-decoration: none;				
+		}
 	}	
 }
 
