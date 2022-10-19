@@ -60,6 +60,8 @@ html, body {
 	color: #D7D7D7;
 }
 
+/*** MIXINS ***/
+
 /*** BLOG ***/
 
 .blog {
@@ -101,6 +103,8 @@ html, body {
 		}
 	}
 }
+
+/*** SIGN-UP ***/
 
 .signup {
 	height: 100%;
@@ -164,6 +168,8 @@ html, body {
 	}	
 }
 
+/*** LOGIN ***/
+
 .login {
 	height: 100%;
 	display: flex;
@@ -225,6 +231,8 @@ html, body {
 	}	
 }
 
+/*** POSTS ***/
+
 .posts {	
 	display: flex;
 	flex-direction: column;
@@ -275,6 +283,8 @@ html, body {
 		padding-bottom: 1rem;
 	}
 }
+
+/*** POST ***/
 
 .post {	
 	display: flex;
@@ -389,6 +399,8 @@ html, body {
 	}
 }
 
+/*** COMMENT ***/
+
 .comment {
 	height: 100%;
 	display: flex;
@@ -404,7 +416,6 @@ html, body {
 	}
 
 	&__button {
-
 		background-color: #161616;
 		border: 1px solid #D7D7D7;
 		border-radius: 5px;
