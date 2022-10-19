@@ -388,3 +388,34 @@ html, body {
 		margin-bottom: 1rem;
 	}
 }
+
+.comment {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1.25rem;
+	}
+
+	&__button {
+
+		background-color: #161616;
+		border: 1px solid #D7D7D7;
+		border-radius: 5px;
+		padding: 0.5rem 1rem;
+		color: #D7D7D7;
+
+		transition: all 0.3s;
+
+		&:hover {
+			color: #161616;
+			background-color: #D7D7D7;
+		}
+	}
+}

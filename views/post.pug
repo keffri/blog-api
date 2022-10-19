@@ -16,6 +16,7 @@ block content
             div(class="post__commentContainer")
                 p(class="post__commentContainer--user") #{comment.user}
                 p(class="post__commentContainer--text") #{comment.comment}
+                hr
                 p #{comment.commentDate}
                 if comment.edited
                     p Edited: #{comment.editedDate}
