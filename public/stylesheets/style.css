@@ -312,7 +312,7 @@ html, body {
   background-color: #161616;
   border: 1px solid #D7D7D7;
   border-radius: 5px;
-  padding: 0.25rem 0.5rem;
+  padding: 0.5rem 1rem;
   color: #D7D7D7;
   cursor: pointer;
   transition: all 0.3s;
@@ -358,11 +358,19 @@ html, body {
   border-radius: 5px;
   padding: 0.5rem 1rem;
   color: #D7D7D7;
+  cursor: pointer;
   transition: all 0.3s;
 }
 .comment__button:hover {
   color: #161616;
   background-color: #D7D7D7;
+}
+.comment__button:hover a {
+  color: #161616;
+}
+.comment__button a {
+  color: #D7D7D7;
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=style.css.map */
