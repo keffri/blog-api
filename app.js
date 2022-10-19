@@ -5,6 +5,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const session = require('express-session');
+const MemoryStore = require('memorystore')(session);
 const passport = require('passport');
 const { authenticate, serialize, deserialize } = require('./passport/passport');
 
@@ -36,7 +37,16 @@ passport.use(authenticate);
 passport.serializeUser(serialize);
 passport.deserializeUser(deserialize);
 
-app.use(session({ secret: 'keffri', resave: false, saveUninitialized: true }));
+app.use(
+  session({
+    cookie: { maxAge: 86400000 },
+    store: new MemoryStore({
+      checkPeriod: 86400000, // prune expired entries every 24h
+    }),
+    resave: false,
+    secret: 'keffri',
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
