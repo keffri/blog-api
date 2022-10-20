@@ -37,15 +37,3 @@ router.delete(
 );
 
 module.exports = router;
-
-// | GET /blog/posts - get all posts
-// | POST /blog/posts - create a post
-// | GET /blog/posts/:post_id - get a single post
-// | PUT  /blog/posts/:post_id - update a post
-// | DELETE /blog/posts/:post_id - delete a post
-
-// | GET /blog/posts/:post_id/comments - get all comments on single post
-// | POST /blog/posts/:post_id/comments - create a comment
-// | GET /blog/posts/:post_id/comments/:comment_id - get a single comment from post
-// | PUT /blog/posts/:post_id/comments/:comment_id - update a comment
-// | DELETE /blog/posts/:post_id/comments/:comment_id - delete a comment
