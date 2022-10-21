@@ -10,12 +10,9 @@ router.get('/', blog_controller.getBlog);
 
 // POSTS
 router.get('/posts', post_controller.getPosts);
-router.post('/posts', post_controller.createPost);
 
 // SINGLE POST
 router.get('/posts/:post_id', post_controller.getPost);
-router.put('/posts/:post_id', post_controller.updatePost);
-router.delete('/posts/:post_id', post_controller.deletePost);
 
 // COMMENTS
 router.post('/posts/:post_id/comments', comment_controller.postComment);
