@@ -9,7 +9,7 @@ exports.getLogin = (req, res, next) => {
 
 exports.postLogin = passport.authenticate('local', {
   successRedirect: '/blog',
-  failureRedirect: '/sign-up',
+  failureRedirect: '/user/sign-up',
 });
 
 exports.getLogout = (req, res, next) => {
