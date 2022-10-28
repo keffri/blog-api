@@ -4,6 +4,10 @@ This project implements RESTful practices to read from and write to MongoDB with
 
 Check it out here: <a href="https://keffri-blog-api.herokuapp.com/blog">Blog API</a>
 
+<p align="center">
+    <img src="/public/images/blogApiPreview.png" width="1000" title="Blog API Preview">
+</p>
+
 ## Author
 
 👤 **Keffri Neal**
