@@ -14,7 +14,10 @@ block content
             p #{post.postDate}
         each comment in post.comments
             div(class="post__commentContainer")
-                p(class="post__commentContainer--user") #{comment.user}
+                if comment.user === "keffri"
+                    p(class="post__commentContainer--user" style="color: red") #{comment.user}
+                else
+                    p(class="post__commentContainer--user") #{comment.user}
                 p(class="post__commentContainer--text") #{comment.comment}
                 hr
                 p #{comment.commentDate}
